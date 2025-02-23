@@ -1,0 +1,1 @@
+# telepito_pendrive_puska
