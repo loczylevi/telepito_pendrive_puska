@@ -149,3 +149,39 @@ Ha UEFI módban akarod telepíteni Ventoy-t (GPT partícióval), akkor ezt kell 
 sudo ./Ventoy2Disk.sh -I -g /dev/sdb
 ```
 
+telepitő ellenörzése hogy UEFIS vagy LEGACY-s
+
+# ha type: gpt --> akkor UEFIS
+# ha type: dos --> akkor meg LEGACY BIOS
+
+```bash
+sudo fdisk -l /dev/sdb
+```
+__kimenet:__
+```bash
+loczylevi@sis:~$ sudo fdisk -l /dev/sdb
+Disk /dev/sdb: 7,5 GiB, 8053063680 bytes, 15728640 sectors
+Disk model: ProductCode
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 41562BD9-C4FB-400D-8735-2509118873FE
+
+Device        Start      End  Sectors  Size Type
+/dev/sdb1      2048 15663063 15661016  7,5G Microsoft basic data
+/dev/sdb2  15663064 15728599    65536   32M Microsoft basic data
+[19:54]
+loczylevi@sis:~$ sudo fdisk -l /dev/sdb
+Disk /dev/sdb: 57,67 GiB, 61920509952 bytes, 120938496 sectors
+Disk model: DataTraveler 3.0
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x2748cfef
+
+Device     Boot     Start       End   Sectors  Size Id Type
+/dev/sdb1  *         2048 120872959 120870912 57,6G  7 HPFS/NTFS/exFAT
+/dev/sdb2       120872960 120938495     65536   32M ef EFI (FAT-12/16/32)
+```
