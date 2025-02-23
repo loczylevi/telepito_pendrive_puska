@@ -2,6 +2,10 @@
 
 ## Természetes Ubuntu alatt mert a windows :triumph: :shit:
 
+windowson rufus
+https://rufus.ie/en/
+
+
 https://www.ventoy.net/en/index.html
 
 Secure copy hint
